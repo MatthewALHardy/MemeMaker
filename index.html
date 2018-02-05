@@ -1,0 +1,72 @@
+<!-- Inputs - max height, max width, space between lines, Typeface, text -->
+<!-- Split text by spaces -->
+<!-- Set MaximumUndersizeFont to zero --> 
+<!-- Pick a font size to start with e.g. 32 call it CurrentFontSize -->
+<!-- Start a new line -->
+<!-- Test if first word is too wide at CurrentFontSize -->
+<!-- If so MinimumOversizeFont = CurrentFontSize Pick a new CurrentFontSize to test -->
+<!-- By splitting MinimumOversizeFont and MaximumUndersizeFont then rounding down -->
+<!-- If CurrentFontSize = MinimumOversizeFont return this value -->
+<html>
+<head>
+<link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<p id='displayResult' style="font-family: Arimo">Hello World</p>
+<canvas id="myCanvas" width="470" height="470"
+style="background-image: url('HardBack.png');"
+</canvas>
+<script type="text/javascript" >
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, 470, 470);
+main()	
+function main() {
+	var phrase = "I'M NOT EVIL I'M JUST GOOD LOOKING";
+	var fontsize = 32;
+	var maximumWidth = 470;
+	var maximumHeight = 470;
+	var spaceBetweenLines = 10;
+	var typeface = 'Arimo';
+	var result = phraseFits(phrase,typeface,fontsize,maximumWidth,maximumHeight,spaceBetweenLines)
+	var resultHTML = document.getElementById("displayResult");
+	resultHTML.innerHTML = result;
+}
+function lineFits(line,typeface,fontsize,maximumWidth) {
+	if (ctx.measureText(line).width <= maximumWidth) {
+		return true;
+	}
+	else {
+		return false;
+	};
+}
+function phraseFits(phrase,typeface,fontsize,maximumWidth,maximumHeight,spaceBetweenLines) {
+	var words = phrase.split(" ");
+	var line=[];
+	var l = 0;
+	line.push(words[0]);
+	if (lineFits(line[l],typeface,fontsize,maximumWidth)) {
+		confirmedLine = line[l];	
+		for (w = 1; w < words.length; w++) {
+			// test line with additional word
+			testLine = confirmedLine + word[w];
+		 
+			//how do we make it so that the first word of the line is treated differently?
+	
+		}
+	}
+	else {
+		return false;	
+	}	
+		
+	
+
+}
+main()
+</script>
+
+
+</body>
+
+</html>
+
